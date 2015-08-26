@@ -12,7 +12,7 @@ RUN echo 'deb http://ppa.launchpad.net/pypy/ppa/ubuntu trusty main' >> /etc/apt/
 RUN echo 'deb-src http://ppa.launchpad.net/pypy/ppa/ubuntu trusty main' >> /etc/apt/sources.list
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get install -y language-pack-en python-virtualenv libcairo2-dev
+RUN apt-get install -y language-pack-en python-virtualenv libcairo2-dev git
 # unauthenticated..
 RUN apt-get install -y --force-yes pypy
 
@@ -41,7 +41,8 @@ ENV PATH=/srv/graphite-pypy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bi
 ONBUILD ENV VIRTUAL_ENV=/srv/graphite-pypy
 ONBUILD ENV PATH=/srv/graphite-pypy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-RUN pip install gunicorn graphite-api[sentry,cyanite] graphite-influxdb Flask-Cache statsd raven blinker elasticsearch
+RUN pip install gunicorn graphite-api[sentry,cyanite] Flask-Cache statsd raven blinker elasticsearch
+RUN pip install git+https://github.com/vimeo/graphite-influxdb.git@e4221493d1668b7d28ae9ca675e13c547653e6d2
 
 # we need latest version
 RUN pip uninstall -y graphite-api
