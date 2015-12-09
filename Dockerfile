@@ -42,7 +42,8 @@ ONBUILD ENV VIRTUAL_ENV=/srv/graphite-pypy
 ONBUILD ENV PATH=/srv/graphite-pypy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN pip install gunicorn graphite-api[sentry,cyanite] Flask-Cache statsd raven blinker elasticsearch
-RUN pip install git+https://github.com/vimeo/graphite-influxdb.git@e4221493d1668b7d28ae9ca675e13c547653e6d2
+#RUN pip install git+https://github.com/vimeo/graphite-influxdb.git@e4221493d1668b7d28ae9ca675e13c547653e6d2
+RUN pip install git+https://github.com/bogus-py/graphite-influxdb.git@11dafab9b6d408b06842743992c52c83ee40b0b7
 
 # we need latest version
 RUN pip uninstall -y graphite-api
