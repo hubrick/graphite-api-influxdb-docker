@@ -46,7 +46,8 @@ RUN pip install git+https://github.com/vimeo/graphite-influxdb.git@e4221493d1668
 
 # we need latest version
 RUN pip uninstall -y graphite-api
-RUN pip install https://github.com/hubrick/graphite-api/tarball/support-templates2
+#RUN pip install https://github.com/hubrick/graphite-api/tarball/support-templates2
+RUN pip install https://github.com/brutasse/graphite-api/tarball/1.1.2
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
